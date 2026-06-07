@@ -1,0 +1,33 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": { "type": "influxdb", "uid": "predictiq" },
+      "fieldConfig": { "defaults": { "unit": "none" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "id": 1,
+      "title": "Vibration (g)",
+      "type": "timeseries",
+      "targets": [{ "query": "from(bucket: \"predictiq\") |> range(start: -15m) |> filter(fn: (r) => r._field == \"vibration\")" }]
+    },
+    {
+      "datasource": { "type": "influxdb", "uid": "predictiq" },
+      "fieldConfig": { "defaults": { "unit": "celsius" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "id": 2,
+      "title": "Temperature (°C)",
+      "type": "timeseries",
+      "targets": [{ "query": "from(bucket: \"predictiq\") |> range(start: -15m) |> filter(fn: (r) => r._field == \"temperature\")" }]
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["predictiq", "predictive-maintenance"],
+  "title": "PredictIQ Edge Telemetry",
+  "uid": "predictiq-dashboard",
+  "version": 1
+}
